@@ -11,13 +11,18 @@ Aplikasi web untuk mengirim tautan Google Drive dokumen hasil Tes Kemampuan Akad
 
 ### 1. Deploy Backend (Google Apps Script)
 
-1. Buka [script.google.com](https://script.google.com) dan buat project baru
-2. Salin isi `Code.gs` ke editor script
-3. Pastikan `FOLDER_ID` sudah sesuai (folder Google Drive hasil TKA)
-4. **Deploy** → **Deploy sebagai web app**:
+1. Buat akun Gmail baru — misal: **hasiltka.smpmumtaza@gmail.com**
+2. Buka [script.google.com](https://script.google.com) **dengan akun Gmail tsb** dan buat project baru
+3. Salin isi `Code.gs` ke editor script
+4. Pastikan `FOLDER_ID` sudah sesuai (folder Google Drive hasil TKA)
+5. **Deploy** → **Deploy sebagai web app**:
    - `Execute as`: **Me**
    - `Who has access`: **Anyone** (karena dipanggil dari frontend)
-5. Klik **Deploy** dan copy URL web app (misal: `https://script.google.com/macros/s/.../exec`)
+6. Klik **Deploy** dan copy URL web app (misal: `https://script.google.com/macros/s/.../exec`)
+
+> **Kenapa pakai Gmail?** 
+> Domain `smpmumtaza.sch.id` tidak punya SPF/DKIM Google, jadi email dari `MailApp` rentan masuk spam. 
+> `GmailApp` dari akun `@gmail.com` sudah pasti lolos SPF/DKIM dan masuk inbox.
 
 ### 2. Hubungkan Frontend ke Backend
 

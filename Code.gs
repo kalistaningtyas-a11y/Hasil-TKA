@@ -37,13 +37,11 @@ function doPost(e) {
     file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
     const fileUrl = file.getUrl();
 
-    // Kirim email
+    // Kirim email (via GmailApp agar tidak masuk spam)
     const subject = `Hasil Tes Kemampuan Akademik (TKA) - SMP Mumtaza`;
     const htmlBody = buildEmail(nisn, tanggalFormat, fileName, fileUrl);
 
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
+    GmailApp.sendEmail(email, subject, '', {
       htmlBody: htmlBody,
       name: 'SMP Mumtaza',
       replyTo: 'kalistaningtyas@smpmumtaza.sch.id'
